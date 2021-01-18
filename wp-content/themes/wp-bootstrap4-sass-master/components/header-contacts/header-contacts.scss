@@ -1,0 +1,29 @@
+.header-contacts {
+  background-color: var(--accent-color-dark);
+  padding: 16px 31px;
+
+  &__title {
+    opacity: 0.4;
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 11px;
+  }
+
+  &__phone {
+    font-size: 22px;
+    line-height: 25px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  &__back-ring {
+    @include resetBtn;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 700;
+    text-decoration: underline;
+    color: #ffd600;
+  }
+}

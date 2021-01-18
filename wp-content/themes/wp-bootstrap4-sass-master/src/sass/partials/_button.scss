@@ -1,0 +1,17 @@
+.button {
+  @include resetBtn;
+  font-size: 17px;
+  line-height: 25px;
+  font-weight: 700;
+  color: #000000;
+  background-color: var(--accent-color-light);
+  padding: 23px 33px 21px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &_transparent {
+    background-color: transparent;
+  }
+}

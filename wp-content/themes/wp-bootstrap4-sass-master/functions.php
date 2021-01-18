@@ -20,13 +20,11 @@
 require get_template_directory() . '/phpword/document-generator.php';
 
 
-if (!isset($content_width))
-{
+if (!isset($content_width)) {
     $content_width = 900;
 }
 
-if (function_exists('add_theme_support'))
-{
+if (function_exists('add_theme_support')) {
     // Add Menu Support
     add_theme_support('menus');
 
@@ -51,44 +49,48 @@ if (function_exists('add_theme_support'))
 // WP Bootstrap Sass navigation
 function wpbootstrapsass_nav()
 {
-	wp_nav_menu(
-	array(
-		'theme_location'  => 'header-menu',
-        'menu'            => '',
-        'container'       => 'div',
-        'container_class' => 'collapse navbar-collapse',
-        'container_id'    => 'bs-example-navbar-collapse-1',
-        'menu_class'      => 'nav navbar-nav',
-        'menu_id'         => '',
-        'echo'            => true,
-        'before'          => '',
-        'after'           => '',
-        'link_before'     => '',
-        'link_after'      => '',
-        'items_wrap'      => '<ul class="nav navbar-nav navbar-right">%3$s</ul>',
+    wp_nav_menu(
+        array(
+            'theme_location' => 'header-menu',
+            'menu' => '',
+            'container' => 'div',
+            'container_class' => 'collapse navbar-collapse',
+            'container_id' => 'bs-example-navbar-collapse-1',
+            'menu_class' => 'nav navbar-nav',
+            'menu_id' => '',
+            'echo' => true,
+            'before' => '',
+            'after' => '',
+            'link_before' => '',
+            'link_after' => '',
+            'items_wrap' => '<ul class="nav navbar-nav navbar-right">%3$s</ul>',
         )
-	);
+    );
 }
 
 // add bootstrap css class to menu <li> element
-function atg_menu_classes($classes, $item, $args) {
+function atg_menu_classes($classes, $item, $args)
+{
     if ($args->theme_location == 'header-menu') {
-      $classes[] = 'nav-item';
+        $classes[] = 'nav-item';
     }
     return $classes;
 }
+
 add_filter('nav_menu_css_class', 'atg_menu_classes', 1, 3);
 
 // add bootstrap css class to menu <a> element
-function add_specific_menu_location_atts( $atts, $item, $args ) {
+function add_specific_menu_location_atts($atts, $item, $args)
+{
     // check if the item is in the header menu
-    if( $args->theme_location == 'header-menu' ) {
-      // add the desired attributes:
-      $atts['class'] = 'nav-link';
+    if ($args->theme_location == 'header-menu') {
+        // add the desired attributes:
+        $atts['class'] = 'nav-link';
     }
     return $atts;
 }
-add_filter( 'nav_menu_link_attributes', 'add_specific_menu_location_atts', 10, 3 );
+
+add_filter('nav_menu_link_attributes', 'add_specific_menu_location_atts', 10, 3);
 
 // Load WP Bootstrap Sass scripts (header.php)
 function wpbootstrapsass_header_scripts()
@@ -99,7 +101,7 @@ function wpbootstrapsass_header_scripts()
         wp_register_script('wpbootstrapsassscripts', get_template_directory_uri() . '/dist/main.bundle.js', array('jquery'), '1.0.0');
 
         // Enqueue it!
-        wp_enqueue_script( array('wpbootstrapsassscripts') );
+        wp_enqueue_script(array('wpbootstrapsassscripts'));
 
     }
 }
@@ -111,25 +113,25 @@ function add_script_tag_attributes($tag, $handle)
 {
     switch ($handle) {
 
-    	// adding async to main js bundle
-    	// for defer, replace async="async" with defer="defer"
-    	case ('wpbootstrapsassscripts'):
-    		return str_replace( ' src', ' async="async" src', $tag );
-    	break;
+        // adding async to main js bundle
+        // for defer, replace async="async" with defer="defer"
+        case ('wpbootstrapsassscripts'):
+            return str_replace(' src', ' async="async" src', $tag);
+            break;
 
-    	// example adding CDN integrity and crossorigin attributes
-    	// Note: popper.js is loaded into the main.bundle.js from npm
-    	// This is just an example
+        // example adding CDN integrity and crossorigin attributes
+        // Note: popper.js is loaded into the main.bundle.js from npm
+        // This is just an example
         case ('popper-js'):
-            return str_replace( ' min.js', 'min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"', $tag );
-        break;
+            return str_replace(' min.js', 'min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"', $tag);
+            break;
 
-    	// example adding CDN integrity and crossorigin attributes
-    	// Note: bootstrap.js is loaded into the main.bundle.js from npm
-    	// This is just an example
+        // example adding CDN integrity and crossorigin attributes
+        // Note: bootstrap.js is loaded into the main.bundle.js from npm
+        // This is just an example
         case ('bootstrap-js'):
-            return str_replace( ' min.js', 'min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"', $tag );
-        break;
+            return str_replace(' min.js', 'min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"', $tag);
+            break;
 
         default:
             return $tag;
@@ -202,8 +204,7 @@ function add_slug_to_body_class($classes)
 }
 
 // If Dynamic Sidebar Exists
-if (function_exists('register_sidebar'))
-{
+if (function_exists('register_sidebar')) {
     // Define Sidebar Widget Area 1
     register_sidebar(array(
         'name' => __('Widget Area 1', 'wpbootstrapsass'),
@@ -253,7 +254,7 @@ function wpbootstrapsass_pagination()
         'after_page_number' => '</span>',
     ));
 
-    if ( $links ) :
+    if ($links) :
 
         echo $links;
 
@@ -310,14 +311,14 @@ function wpbootstrapsass_style_remove($tag)
 }
 
 // Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
-function remove_thumbnail_dimensions( $html )
+function remove_thumbnail_dimensions($html)
 {
     $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
     return $html;
 }
 
 // Custom Gravatar in Settings > Discussion
-function wpbootstrapsassgravatar ($avatar_defaults)
+function wpbootstrapsassgravatar($avatar_defaults)
 {
     $myavatar = get_template_directory_uri() . '/img/gravatar.jpg';
     $avatar_defaults[$myavatar] = "Custom Gravatar";
@@ -328,7 +329,7 @@ function wpbootstrapsassgravatar ($avatar_defaults)
 function enable_threaded_comments()
 {
     if (!is_admin()) {
-        if (is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
+        if (is_singular() and comments_open() and (get_option('thread_comments') == 1)) {
             wp_enqueue_script('comment-reply');
         }
     }
@@ -337,63 +338,64 @@ function enable_threaded_comments()
 // Custom Comments Callback
 function wpbootstrapsasscomments($comment, $args, $depth)
 {
-	$GLOBALS['comment'] = $comment;
-	extract($args, EXTR_SKIP);
+    $GLOBALS['comment'] = $comment;
+    extract($args, EXTR_SKIP);
 
-	if ( 'div' == $args['style'] ) {
-		$tag = 'div';
-		$add_below = 'comment';
-	} else {
-		$tag = 'li';
-		$add_below = 'div-comment';
-	}
-?>
+    if ('div' == $args['style']) {
+        $tag = 'div';
+        $add_below = 'comment';
+    } else {
+        $tag = 'li';
+        $add_below = 'div-comment';
+    }
+    ?>
     <!-- heads up: starting < for the html tag (li or div) in the next line: -->
-    <<?php echo $tag ?> <?php comment_class(empty( $args['has_children'] ) ? '' : 'parent') ?> id="comment-<?php comment_ID() ?>">
-	<?php if ( 'div' != $args['style'] ) : ?>
-	<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
-	<?php endif; ?>
-	<div class="comment-author vcard">
-	<?php if ($args['avatar_size'] != 0) echo get_avatar( $comment, $args['avatar_size'] ); ?>
-	<?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
-	</div>
-<?php if ($comment->comment_approved == '0') : ?>
-	<em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
-	<br />
+    <<?php echo $tag ?><?php comment_class(empty($args['has_children']) ? '' : 'parent') ?> id="comment-<?php comment_ID() ?>">
+    <?php if ('div' != $args['style']) : ?>
+    <div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+<?php endif; ?>
+    <div class="comment-author vcard">
+        <?php if ($args['avatar_size'] != 0) echo get_avatar($comment, $args['avatar_size']); ?>
+        <?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
+    </div>
+    <?php if ($comment->comment_approved == '0') : ?>
+    <em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
+    <br/>
 <?php endif; ?>
 
-	<div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
-		<?php
-			printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'),'  ','' );
-		?>
-	</div>
+    <div class="comment-meta commentmetadata"><a
+                href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)) ?>">
+            <?php
+            printf(__('%1$s at %2$s'), get_comment_date(), get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'), '  ', '');
+        ?>
+    </div>
 
-	<?php comment_text() ?>
+    <?php comment_text() ?>
 
-	<div class="reply">
-	<?php comment_reply_link(array_merge( $args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-	</div>
-	<?php if ( 'div' != $args['style'] ) : ?>
-	</div>
-	<?php endif; ?>
+    <div class="reply">
+        <?php comment_reply_link(array_merge($args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+    </div>
+    <?php if ('div' != $args['style']) : ?>
+    </div>
+<?php endif; ?>
 <?php }
 
 // add Bootstrap 4 .img-fluid class to images inside post content
-function add_class_to_image_in_content($content) 
+function add_class_to_image_in_content($content)
 {
 
-	$content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
-	$document = new DOMDocument();
-	libxml_use_internal_errors(true);
-	$document->loadHTML(utf8_decode($content));
+    $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+    $document = new DOMDocument();
+    libxml_use_internal_errors(true);
+    $document->loadHTML(utf8_decode($content));
 
-	$imgs = $document->getElementsByTagName('img');
-	foreach ($imgs as $img) {           
-		$img->setAttribute('class','img-fluid');
-	}
+    $imgs = $document->getElementsByTagName('img');
+    foreach ($imgs as $img) {
+        $img->setAttribute('class', 'img-fluid');
+    }
 
-	$html = $document->saveHTML();
-	return $html;  	
+    $html = $document->saveHTML();
+    return $html;
 
 }
 
@@ -467,35 +469,35 @@ function create_post_type_custom_post_type_demo()
     register_taxonomy_for_object_type('post_tag', 'custom-post-type');
     register_post_type('custom-post-type', // Register Custom Post Type
         array(
-        'labels' => array(
-            'name' => __('WP Bootstrap Sass Custom Post', 'wpbootstrapsass'), // Rename these to suit
-            'singular_name' => __('WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
-            'add_new' => __('Add New', 'wpbootstrapsass'),
-            'add_new_item' => __('Add New WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
-            'edit' => __('Edit', 'wpbootstrapsass'),
-            'edit_item' => __('Edit WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
-            'new_item' => __('New WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
-            'view' => __('View WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
-            'view_item' => __('View WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
-            'search_items' => __('Search WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
-            'not_found' => __('No WP Bootstrap Sass Custom Posts found', 'wpbootstrapsass'),
-            'not_found_in_trash' => __('No WP Bootstrap Sass Custom Posts found in Trash', 'wpbootstrapsass')
-        ),
-        'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-        'has_archive' => true,
-        'supports' => array(
-            'title',
-            'editor',
-            'excerpt',
-            'thumbnail'
-        ), // Go to Dashboard Custom WP Bootstrap Sass post for supports
-        'can_export' => true, // Allows export in Tools > Export
-        'taxonomies' => array(
-            'post_tag',
-            'category'
-        ) // Add Category and Post Tags support
-    ));
+            'labels' => array(
+                'name' => __('WP Bootstrap Sass Custom Post', 'wpbootstrapsass'), // Rename these to suit
+                'singular_name' => __('WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
+                'add_new' => __('Add New', 'wpbootstrapsass'),
+                'add_new_item' => __('Add New WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
+                'edit' => __('Edit', 'wpbootstrapsass'),
+                'edit_item' => __('Edit WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
+                'new_item' => __('New WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
+                'view' => __('View WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
+                'view_item' => __('View WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
+                'search_items' => __('Search WP Bootstrap Sass Custom Post', 'wpbootstrapsass'),
+                'not_found' => __('No WP Bootstrap Sass Custom Posts found', 'wpbootstrapsass'),
+                'not_found_in_trash' => __('No WP Bootstrap Sass Custom Posts found in Trash', 'wpbootstrapsass')
+            ),
+            'public' => true,
+            'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+            'has_archive' => true,
+            'supports' => array(
+                'title',
+                'editor',
+                'excerpt',
+                'thumbnail'
+            ), // Go to Dashboard Custom WP Bootstrap Sass post for supports
+            'can_export' => true, // Allows export in Tools > Export
+            'taxonomies' => array(
+                'post_tag',
+                'category'
+            ) // Add Category and Post Tags support
+        ));
 }
 
 /*------------------------------------*\
@@ -513,5 +515,14 @@ function wpbootstrapsass_shortcode_demo_2($atts, $content = null) // Demo Headin
 {
     return '<h2>' . $content . '</h2>';
 }
+
+function addLogo()
+{
+    add_theme_support(
+        'custom-logo', []
+    );
+}
+
+add_action('after_setup_theme', 'addLogo');
 
 ?>

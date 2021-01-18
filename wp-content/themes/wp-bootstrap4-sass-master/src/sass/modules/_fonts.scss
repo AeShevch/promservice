@@ -1,22 +1,25 @@
-/**
- * modules/fonts
- * ---
- * Declare fonts here
- */
-
-
-/*
+/* montserrat-regular - latin_cyrillic */
 @font-face {
-  font-family: "Font-Name";
-  src: url("fonts/font-name.eot");
-  src: url("fonts/font-name.eot?#iefix") format("embedded-opentype"),
-    url("fonts/font-name.woff") format("woff"),
-    url("fonts/font-name.ttf") format("truetype"),
-    url("fonts/font-name.svg#font-name") format("svg");
-  font-weight: normal;
+  font-family: 'Montserrat';
   font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/montserrat-v15-latin_cyrillic-regular.eot'); /* IE9 Compat Modes */
+  src:
+  url('../fonts/montserrat-v15-latin_cyrillic-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/montserrat-v15-latin_cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/montserrat-v15-latin_cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/montserrat-v15-latin_cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
 }
-*/
-body{
-  font-family: Montserrat;
+/* montserrat-700 - latin_cyrillic */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/montserrat-v15-latin_cyrillic-700.eot'); /* IE9 Compat Modes */
+  src:
+  url('../fonts/montserrat-v15-latin_cyrillic-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/montserrat-v15-latin_cyrillic-700.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/montserrat-v15-latin_cyrillic-700.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/montserrat-v15-latin_cyrillic-700.ttf') format('truetype'), /* Safari, Android, iOS */
 }
+

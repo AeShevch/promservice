@@ -3,3 +3,23 @@
  * ---
  */
 
+.footer {
+  padding: 55px 0;
+
+  &__email {
+    font-size: 20px;
+    line-height: 25px;
+    font-weight: 700;
+    text-decoration: underline;
+    color: #000000;
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  &__copyright {
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+}

@@ -15,6 +15,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
 */
 
 // Bootstrap
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1320px,
+) !default;
 @import "~bootstrap/scss/bootstrap";
 
 // Modules
@@ -24,11 +30,18 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 // Partials
 @import "partials/body";
-@import "partials/wordpress";
 @import "partials/utils";
-@import "partials/wrapper";
 @import "partials/header";
 @import "partials/nav";
 @import "partials/sidebar";
 @import "partials/footer";
 @import "partials/print";
+@import "partials/logo";
+@import "partials/main-page";
+@import "partials/request-block";
+@import "partials/button";
+@import "partials/politics-agreement";
+
+// Components
+@import "components/menu/menu";
+@import "components/header-contacts/header-contacts";

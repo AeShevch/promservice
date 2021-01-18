@@ -1,23 +1,7 @@
 <!-- footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="text-center p-2">
-            <a href="mailTo:support@promservice65.ru"
-               title="Написать нам на email"
-               class="footer__email">
-                support@promservice65.ru
-            </a>
-            <!-- copyright -->
-            <p class="copyright">
-                &copy; <?php echo date('Y'); ?> ООО «ПромСервис». Все права защищены.
-            </p>
-            <!-- /copyright -->
-            <button class="open-politics-modal" type="button">
-                Политика конфиденциальности..
-            </button>
-        </div>
-    </div><!-- /.container -->
-</footer>
+<?php
+// Контакты для шапки
+get_template_part('layouts/footer'); ?>
 <!-- /footer -->
 
 

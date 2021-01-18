@@ -1,0 +1,17 @@
+.main-page {
+  &__title {
+    font-size: 34px;
+    line-height: 35px;
+    font-weight: 700;
+    margin: 62px auto 31px;
+    max-width: 780px;
+  }
+
+  &__sub-title {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 400;
+    margin: 0 0 53px;
+    text-transform: uppercase;
+  }
+}

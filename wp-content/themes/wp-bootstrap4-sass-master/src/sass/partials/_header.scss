@@ -2,6 +2,14 @@
  * partials/header
  * ---
  */
-.page-header{
-  color:black;
+.header {
+  &__top {
+    background-color: var(--accent-color);
+  }
+
+
+  &__inner {
+    border-bottom: 2px solid var(--border-color);
+    padding: 20px 0;
+  }
 }

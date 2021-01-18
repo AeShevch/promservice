@@ -1,0 +1,17 @@
+.menu {
+
+  &-item {
+    color: #fff;
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: 700;
+
+    & a {
+      color: #fff;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

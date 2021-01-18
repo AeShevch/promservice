@@ -1,0 +1,9 @@
+.politics-agreement {
+  &__open {
+    @include resetBtn;
+
+    line-height: 25px;
+    font-weight: 400;
+    text-decoration: underline;
+  }
+}

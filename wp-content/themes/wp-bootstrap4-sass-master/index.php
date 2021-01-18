@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<main class="main-page">
+<main class="main-page text-center">
     <div class="container">
         <h1 class="main-page__title">
             Техническое обслуживание внутридомового
@@ -10,7 +10,7 @@
         </h2>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-6 pr-0">
                 <article class="request-block">
                     <h3 class="request-block__title">
                         Заявка в АДС
@@ -19,18 +19,18 @@
                         (аврийно-диспетчерская служба)
                     </h4>
                     <button type="button"
-                            class="button button_accent">
+                            class="request-block__button button button_accent">
                         Оставить заявку
                     </button>
                 </article>
             </div>
-            <div class="col-6">
+            <div class="col-6 pl-0">
                 <article class="request-block request-block_dark">
                     <h3 class="request-block__title">
                         Заявка в проектно-<br>строительный отдел
                     </h3>
                     <button type="button"
-                            class="button button_accent">
+                            class="request-block__button button button_accent">
                         Оставить заявку
                     </button>
                 </article>
